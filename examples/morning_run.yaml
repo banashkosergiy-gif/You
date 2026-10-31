@@ -1,0 +1,59 @@
+# Приклад сценарію: оригінальна історія про Піпа, який вчиться бігати щоранку.
+# Будь-яке числове поле можна задати як [від, до] — воно анімується протягом сцени.
+
+video:
+  width: 1280
+  height: 720
+  fps: 24
+  supersample: 2     # 2 = згладжені краї; 1 = швидше
+  # font: path/to/font.ttf   # за замовчуванням шукається DejaVu Sans Bold
+  # audio: music.mp3         # фонова музика (обрізається по довжині відео)
+
+scenes:
+  - type: title
+    duration: 2.5
+    text: "ДЕНЬ 1."
+    fade_in: 0.6
+    fade_out: 0.5
+
+  - type: bedroom
+    duration: 4
+    day: 1
+    day_style: big
+    clock: "5:30"
+    ringing: true
+    expression: determined
+    captions:
+      - {text: "Цього разу — по-справжньому.", start: 1.0, end: 3.8}
+
+  - type: mirror
+    duration: 4
+    day: 2
+    expression: sad
+    fade_in: 0.3
+    captions:
+      - {text: "«Знову не вийде…»", start: 0.6, end: 3.6, typewriter: true, color: [215, 60, 70]}
+
+  - type: bedroom
+    duration: 3
+    day: 3
+    clock: "5:30"
+    action: sleep
+    captions:
+      - {text: "Деякі ранки важчі за інші.", start: 0.5, end: 2.8, size: 34}
+
+  - type: city_run
+    duration: 7
+    day: [4, 30]            # лічильник днів біжить під час монтажу
+    light: [0.0, 0.55]      # ніч → світанок
+    speed: [200, 330]
+    expression: determined
+    captions:
+      - {text: "Не мотивація. Звичка.", start: 3.5, end: 6.8}
+
+  - type: city_run
+    duration: 4
+    day: 31
+    light: [0.6, 0.95]
+    expression: happy
+    fade_out: 1.0
