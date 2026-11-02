@@ -130,3 +130,10 @@ def gym(ctx, t, u, sc):
 ```bash
 python -m unittest discover -s tests -v
 ```
+
+---
+
+## laser_bot: Telegram-бот запису на лазерну епіляцію
+
+Окремий проєкт у теці [`laser_bot/`](laser_bot/README.md): прайс, онлайн-запис
+на вільний час, нагадування клієнтам і адмін-команди для майстра.
