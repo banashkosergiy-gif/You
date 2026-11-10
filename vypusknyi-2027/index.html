@@ -1,0 +1,314 @@
+<!doctype html>
+<html lang="uk">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Випускний 2027 · 11 клас</title>
+<meta name="description" content="Сайт випускного 11 класу 2027 року: 21 учень, волейбол, теніс, мотоцикли та риболовля.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0e1424; --bg2:#151d33; --card:#1b2541; --text:#eef2ff; --muted:#a6b0cf;
+    --accent:#ffc83d; --accent2:#4fd1c5; --line:#2a3658;
+    --volley:#ff7a59; --tennis:#c6e94a; --moto:#ff4d6d; --fish:#4fa8ff;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;font-family:Montserrat,system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.6}
+  a{color:inherit}
+  .wrap{max-width:1100px;margin:0 auto;padding:0 16px}
+
+  /* nav */
+  nav{position:sticky;top:0;z-index:10;background:rgba(14,20,36,.85);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+  nav .wrap{display:flex;align-items:center;justify-content:space-between;gap:12px;padding-top:12px;padding-bottom:12px}
+  .logo{font-weight:800;letter-spacing:.5px}
+  .logo span{color:var(--accent)}
+  .links{display:flex;gap:18px;flex-wrap:wrap}
+  .links a{text-decoration:none;color:var(--muted);font-weight:600;font-size:.95rem}
+  .links a:hover{color:var(--accent)}
+  @media (max-width:700px){.links{display:none}}
+
+  /* hero */
+  header.hero{position:relative;overflow:hidden;padding:90px 0 70px;text-align:center;
+    background:radial-gradient(circle at 20% 20%,#2b3a6b 0,transparent 45%),radial-gradient(circle at 80% 70%,#3b2350 0,transparent 45%),var(--bg)}
+  .hero h1{font-size:clamp(2.4rem,7vw,4.6rem);margin:.2em 0;line-height:1.05}
+  .hero h1 em{font-style:normal;color:var(--accent)}
+  .hero p.lead{color:var(--muted);font-size:1.15rem;max-width:620px;margin:0 auto 30px}
+  .badge{display:inline-block;padding:6px 14px;border:1px solid var(--accent);color:var(--accent);border-radius:999px;font-weight:600;font-size:.85rem}
+  .countdown{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;margin:30px 0}
+  .countdown div{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px 10px;min-width:84px}
+  .countdown b{display:block;font-size:2rem;color:var(--accent)}
+  .countdown small{color:var(--muted)}
+  .btn{display:inline-block;background:var(--accent);color:#1a1a1a;padding:12px 26px;border-radius:999px;font-weight:800;text-decoration:none}
+  .floating{position:absolute;font-size:2.4rem;opacity:.25;animation:float 6s ease-in-out infinite}
+  @keyframes float{50%{transform:translateY(-18px) rotate(8deg)}}
+
+  section{padding:70px 0}
+  section:nth-of-type(even){background:var(--bg2)}
+  h2{font-size:clamp(1.7rem,4vw,2.4rem);margin:0 0 10px}
+  .sub{color:var(--muted);margin:0 0 34px}
+
+  /* stats */
+  .stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:16px}
+  .stat{background:var(--card);border-radius:16px;padding:22px;border:1px solid var(--line);text-align:center}
+  .stat b{font-size:2.4rem;color:var(--accent2);display:block}
+
+  /* sports */
+  .sports{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px}
+  .sport{background:var(--card);border-radius:18px;padding:26px;border-top:5px solid var(--c);transition:transform .2s}
+  .sport:hover{transform:translateY(-6px)}
+  .sport .ico{font-size:2.6rem}
+  .sport h3{margin:8px 0;color:var(--c)}
+  .sport p{color:var(--muted);margin:0 0 12px}
+  .sport .count{font-weight:600;font-size:.9rem}
+
+  /* students */
+  .filters{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:22px}
+  .filters button{font:inherit;font-weight:600;background:var(--card);color:var(--text);border:1px solid var(--line);padding:8px 16px;border-radius:999px;cursor:pointer}
+  .filters button.on{background:var(--accent);color:#1a1a1a;border-color:var(--accent)}
+  .students{display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:16px}
+  .st{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:18px;text-align:center;transition:opacity .2s,transform .2s}
+  .st.hide{display:none}
+  .ava{width:76px;height:76px;border-radius:50%;margin:0 auto 10px;display:grid;place-items:center;font-weight:800;font-size:1.5rem;color:#1a1a1a}
+  .st h4{margin:0 0 4px}
+  .st .q{font-size:.8rem;color:var(--muted);min-height:2.6em}
+  .tags{margin-top:8px;font-size:1.2rem}
+
+  /* timeline */
+  .timeline{position:relative;margin-left:12px;border-left:3px solid var(--line);padding-left:26px}
+  .ev{position:relative;margin-bottom:28px}
+  .ev::before{content:"";position:absolute;left:-36px;top:6px;width:16px;height:16px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 4px var(--bg2)}
+  .ev time{color:var(--accent);font-weight:800}
+  .ev p{margin:4px 0 0;color:var(--muted)}
+
+  /* gallery */
+  .gallery{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px}
+  .ph{aspect-ratio:4/3;border-radius:14px;display:grid;place-items:center;text-align:center;font-weight:600;font-size:.95rem;padding:10px}
+  .ph span{display:block;font-size:2.4rem}
+
+  /* wishes */
+  form{display:grid;gap:10px;max-width:560px}
+  input,textarea{font:inherit;padding:12px;border-radius:12px;border:1px solid var(--line);background:var(--card);color:var(--text)}
+  textarea{min-height:90px;resize:vertical}
+  form button{justify-self:start;font:inherit;border:0;cursor:pointer}
+  .wishes{display:grid;gap:12px;margin-top:26px}
+  .wish{background:var(--card);border-left:4px solid var(--accent2);border-radius:10px;padding:12px 16px}
+  .wish b{color:var(--accent2)}
+
+  footer{text-align:center;padding:30px 16px;color:var(--muted);border-top:1px solid var(--line)}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <div class="logo">11 клас · <span>2027</span></div>
+    <div class="links">
+      <a href="#about">Про нас</a>
+      <a href="#sport">Захоплення</a>
+      <a href="#class">Клас</a>
+      <a href="#plan">План</a>
+      <a href="#gallery">Фото</a>
+      <a href="#wishes">Побажання</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero">
+  <span class="floating" style="left:8%;top:22%">🏐</span>
+  <span class="floating" style="right:10%;top:18%;animation-delay:1s">🎾</span>
+  <span class="floating" style="left:14%;bottom:14%;animation-delay:2s">🏍️</span>
+  <span class="floating" style="right:14%;bottom:18%;animation-delay:3s">🎣</span>
+  <div class="wrap">
+    <span class="badge">Випуск 2027</span>
+    <h1>Наш <em>Випускний</em><br>11 клас</h1>
+    <p class="lead">21 учень, одна команда. Ми граємо у волейбол і теніс, ганяємо на мотоциклах і ловимо найбільшу рибу. Попереду — доросле життя!</p>
+    <div class="countdown" id="countdown" aria-label="Зворотний відлік до випускного">
+      <div><b id="d">0</b><small>днів</small></div>
+      <div><b id="h">0</b><small>годин</small></div>
+      <div><b id="m">0</b><small>хвилин</small></div>
+      <div><b id="s">0</b><small>секунд</small></div>
+    </div>
+    <a class="btn" href="#class">Знайомтесь з класом ↓</a>
+  </div>
+</header>
+
+<section id="about">
+  <div class="wrap">
+    <h2>Про наш клас</h2>
+    <p class="sub">11 років разом: від першого дзвоника до випускного балу.</p>
+    <div class="stats">
+      <div class="stat"><b>21</b>учень</div>
+      <div class="stat"><b>11</b>років навчання</div>
+      <div class="stat"><b>4</b>спортивні захоплення</div>
+      <div class="stat"><b>2027</b>рік випуску</div>
+    </div>
+  </div>
+</section>
+
+<section id="sport">
+  <div class="wrap">
+    <h2>Наші захоплення</h2>
+    <p class="sub">Спорт — це те, що нас об'єднує.</p>
+    <div class="sports" id="sports"></div>
+  </div>
+</section>
+
+<section id="class">
+  <div class="wrap">
+    <h2>Наш клас — 21 учень</h2>
+    <p class="sub">Натисни на захоплення, щоб побачити, хто ним займається.</p>
+    <div class="filters" id="filters"></div>
+    <div class="students" id="students"></div>
+  </div>
+</section>
+
+<section id="plan">
+  <div class="wrap">
+    <h2>План випускного року</h2>
+    <p class="sub">Головні події 2026–2027 навчального року.</p>
+    <div class="timeline">
+      <div class="ev"><time>Жовтень 2026</time><p>Шкільний турнір з волейболу — захищаємо титул чемпіонів школи.</p></div>
+      <div class="ev"><time>Грудень 2026</time><p>Новорічний тенісний турнір «Кубок випускників».</p></div>
+      <div class="ev"><time>Березень 2027</time><p>Фотосесія класу для випускного альбому.</p></div>
+      <div class="ev"><time>Травень 2027</time><p>Мотопробіг класу та велика риболовля на озері.</p></div>
+      <div class="ev"><time>Кінець травня 2027</time><p>Останній дзвоник 🔔</p></div>
+      <div class="ev"><time>Червень 2027</time><p>НМТ, вручення атестатів і випускний бал 🎓</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="gallery">
+  <div class="wrap">
+    <h2>Фотогалерея</h2>
+    <p class="sub">Тут з'являться наші фото — поки що місця для них.</p>
+    <div class="gallery" id="galleryGrid"></div>
+  </div>
+</section>
+
+<section id="wishes">
+  <div class="wrap">
+    <h2>Побажання випускникам</h2>
+    <p class="sub">Залиш кілька теплих слів для класу.</p>
+    <form id="wishForm">
+      <input id="wName" placeholder="Твоє ім'я" maxlength="40" required>
+      <textarea id="wText" placeholder="Твоє побажання…" maxlength="300" required></textarea>
+      <button class="btn" type="submit">Надіслати</button>
+    </form>
+    <div class="wishes" id="wishList"></div>
+  </div>
+</section>
+
+<footer>
+  Випускний 2027 · 11 клас · Зроблено з ❤️ нашим класом
+</footer>
+
+<script>
+// ===== Налаштування: змініть під свій клас =====
+const GRADUATION_DATE = "2027-06-26T18:00:00"; // дата випускного балу
+
+const SPORTS = {
+  volley: {name:"Волейбол", ico:"🏐", color:"var(--volley)", text:"Командна гра, подачі й блоки. Наша збірна — гроза шкільних турнірів."},
+  tennis: {name:"Теніс",    ico:"🎾", color:"var(--tennis)", text:"Швидкість, точність і характер. Тренуємося на кортах щотижня."},
+  moto:   {name:"Мотоцикли",ico:"🏍️", color:"var(--moto)",   text:"Вітер, дорога і свобода. Завжди в шоломі та з дотриманням правил!"},
+  fish:   {name:"Риболовля",ico:"🎣", color:"var(--fish)",   text:"Світанок, тиша та озеро. Терпіння — наша суперсила."}
+};
+
+// 21 учень — імена-приклади, замініть на справжні
+const STUDENTS = [
+  ["Андрій","volley moto","Капітан волейбольної команди"],
+  ["Олена","tennis","Подача 150 км/год — не жарт"],
+  ["Максим","moto fish","Зранку риболовля, ввечері — мотопробіг"],
+  ["Софія","volley tennis","Встигає все і всюди"],
+  ["Дмитро","fish","Знає, де клює найкраще"],
+  ["Анна","volley","Найкращий блок у школі"],
+  ["Іван","moto","Знає мотоцикл до гвинтика"],
+  ["Марія","tennis volley","Душа команди"],
+  ["Богдан","fish moto","Дорога веде до озера"],
+  ["Катерина","tennis","Ракетка — продовження руки"],
+  ["Назар","volley fish","Терплячий на воді, швидкий на майданчику"],
+  ["Вікторія","volley","Ліберо, яка ловить усе"],
+  ["Олександр","moto","Наш головний механік"],
+  ["Юлія","tennis fish","Улов дня і ейс матчу"],
+  ["Тарас","volley moto","Нападник із мотором"],
+  ["Дарина","tennis","Мрія — Вімблдон"],
+  ["Роман","fish","Рекорд класу — короп на 6 кг"],
+  ["Ірина","volley tennis","Завжди з посмішкою"],
+  ["Артем","moto volley","Швидкий у всьому"],
+  ["Христина","fish tennis","Спокій і концентрація"],
+  ["Владислав","volley fish moto","Спробував усе — і все подобається"]
+];
+
+// ===== Зворотний відлік =====
+const target = new Date(GRADUATION_DATE).getTime();
+function tick(){
+  let diff = Math.max(0, target - Date.now());
+  const d = Math.floor(diff/864e5); diff%=864e5;
+  const h = Math.floor(diff/36e5);  diff%=36e5;
+  const m = Math.floor(diff/6e4);   diff%=6e4;
+  const s = Math.floor(diff/1e3);
+  [["d",d],["h",h],["m",m],["s",s]].forEach(([id,v])=>document.getElementById(id).textContent=v);
+}
+tick(); setInterval(tick,1000);
+
+// ===== Картки спорту =====
+const countBy = k => STUDENTS.filter(s=>s[1].split(" ").includes(k)).length;
+document.getElementById("sports").innerHTML = Object.entries(SPORTS).map(([k,s])=>`
+  <div class="sport" style="--c:${s.color}">
+    <div class="ico">${s.ico}</div>
+    <h3>${s.name}</h3>
+    <p>${s.text}</p>
+    <div class="count">👥 ${countBy(k)} учнів</div>
+  </div>`).join("");
+
+// ===== Учні та фільтри =====
+const colors = ["#ffc83d","#4fd1c5","#ff7a59","#c6e94a","#4fa8ff","#ff8fd0","#b69cff"];
+document.getElementById("students").innerHTML = STUDENTS.map(([name,sp,q],i)=>`
+  <div class="st" data-sp="${sp}">
+    <div class="ava" style="background:${colors[i%colors.length]}">${name[0]}</div>
+    <h4>${name}</h4>
+    <div class="q">${q}</div>
+    <div class="tags">${sp.split(" ").map(k=>`<span title="${SPORTS[k].name}">${SPORTS[k].ico}</span>`).join(" ")}</div>
+  </div>`).join("");
+
+const filters = document.getElementById("filters");
+filters.innerHTML = `<button class="on" data-f="all">Усі (${STUDENTS.length})</button>` +
+  Object.entries(SPORTS).map(([k,s])=>`<button data-f="${k}">${s.ico} ${s.name} (${countBy(k)})</button>`).join("");
+filters.addEventListener("click", e=>{
+  const b = e.target.closest("button"); if(!b) return;
+  filters.querySelectorAll("button").forEach(x=>x.classList.toggle("on", x===b));
+  const f = b.dataset.f;
+  document.querySelectorAll(".st").forEach(el=>
+    el.classList.toggle("hide", f!=="all" && !el.dataset.sp.split(" ").includes(f)));
+});
+
+// ===== Галерея (заглушки) =====
+const galleryItems = [
+  ["🏐","Турнір з волейболу","var(--volley)"],["🎾","Тенісний корт","var(--tennis)"],
+  ["🏍️","Мотопробіг","var(--moto)"],["🎣","Риболовля на озері","var(--fish)"],
+  ["🔔","Останній дзвоник","var(--accent)"],["🎓","Випускний бал","var(--accent2)"]
+];
+document.getElementById("galleryGrid").innerHTML = galleryItems.map(([i,t,c])=>`
+  <div class="ph" style="background:linear-gradient(135deg,${c},#1b2541 75%)"><div><span>${i}</span>${t}</div></div>`).join("");
+
+// ===== Побажання (зберігаються лише у вашому браузері) =====
+const KEY = "vypusk2027_wishes";
+function loadWishes(){ try{ return JSON.parse(localStorage.getItem(KEY)) || []; }catch{ return []; } }
+function saveWishes(w){ try{ localStorage.setItem(KEY, JSON.stringify(w)); }catch{} }
+const esc = s => s.replace(/[&<>"']/g, c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+let wishes = loadWishes();
+if(!wishes.length) wishes = [{n:"Класний керівник", t:"Пишаюся вами! Нехай кожен знайде свою дорогу — і на мотоциклі, і в житті."}];
+function renderWishes(){
+  document.getElementById("wishList").innerHTML = wishes.map(w=>`<div class="wish"><b>${esc(w.n)}:</b> ${esc(w.t)}</div>`).join("");
+}
+renderWishes();
+document.getElementById("wishForm").addEventListener("submit", e=>{
+  e.preventDefault();
+  const n = wName.value.trim(), t = wText.value.trim();
+  if(!n || !t) return;
+  wishes.unshift({n,t}); saveWishes(wishes); renderWishes(); e.target.reset();
+});
+</script>
+</body>
+</html>
